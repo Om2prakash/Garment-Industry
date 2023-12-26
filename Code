@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+class Clothing {
+public:
+    string type;
+    string color;
+    string size;
+    string material;
+
+    Clothing(string t, string c, string s, string m)
+        : type(t), color(c), size(s), material(m) {}
+
+    void displayAttributes() const {
+        cout << "Type: " << type << "\nColor: " << color
+                  << "\nSize: " << size << "\nMaterial: " << material << "\n";
+    }
+};
+
+class TopWear : public Clothing {
+public:
+    string sleeveLength;
+    string neckline;
+    string pattern;
+
+    TopWear(string t, string c, string s, string m,
+            string sl, string n, string p)
+        : Clothing(t, c, s, m), sleeveLength(sl), neckline(n), pattern(p) {}
+
+    void displayAttributes() const {
+        Clothing::displayAttributes();
+        cout << "Sleeve Length: " << sleeveLength
+                  << "\nNeckline: " << neckline << "\nPattern: " << pattern << "\n";
+    }
+};
+
+int main() {
+    TopWear tshirt("T-Shirt", "Red", "Medium", "Cotton", "Short", "Round", "Striped");
+    tshirt.displayAttributes();
+
+    return 0;
+}
